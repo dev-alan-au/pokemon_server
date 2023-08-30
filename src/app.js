@@ -84,6 +84,13 @@ app.get("/image/:id", (req, res) => {
   res.sendFile(fileName, getImageOptions("images"));
 });
 
+app.get("/thumbnail/:id", (req, res) => {
+  const id = req.params.id;
+  const paddedId = paddId(id);
+  const fileName = `${paddedId}.png`;
+  res.sendFile(fileName, getImageOptions("thumbnails"));
+});
+
 app.listen(port, () => {
   console.log(`Pokemon app listening on port ${port}`);
 });
