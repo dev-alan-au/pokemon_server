@@ -101,6 +101,10 @@ app.get("/thumbnail/:id", (req, res) => {
   res.sendFile(fileName, getImageOptions("thumbnails"));
 });
 
+app.get("/", (_, res) =>
+  res.send(`We are currently in ${process.env.NODE_ENV} mode.`)
+);
+
 app.listen(port, () => {
   console.log(`Pokemon app listening on port ${port}`);
 });
