@@ -2,6 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 const port = 3000;
@@ -47,10 +48,7 @@ const languages = {
 
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV == "development"
-        ? "http://localhost:3001"
-        : "https://poke-front.alanlai.app",
+    origin: process.env.ORIGIN ?? "https://poke-front.alanlai.app",
   })
 );
 
