@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const cors = require("cors");
 
 const app = express();
 const port = 3000;
@@ -43,6 +44,15 @@ const languages = {
   cn: "chinese",
   fr: "french",
 };
+
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV == "development"
+        ? "http://localhost:3001"
+        : "https://poke-front.alanlai.app",
+  })
+);
 
 app.get("/pokedex", (_, res) => {
   res.send(data);
