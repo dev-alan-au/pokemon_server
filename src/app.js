@@ -55,7 +55,7 @@ app.get("/pokemon/:id", (req, res) => {
   const pokemonRes = structuredClone(pokemon);
   pokemonRes.image = `/image/${id}`;
   pokemonRes.sprite = `/sprite/${id}`;
-  res.json(pokemon);
+  res.json(pokemonRes);
 });
 
 app.get("/pokemon/:language/:id", (req, res) => {
