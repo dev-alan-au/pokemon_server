@@ -21,7 +21,7 @@ function getFile(file) {
   return readJsonFileSync(filepath);
 }
 
-function paddId(id) {
+function padId(id) {
   const pad = MAX_ID_LENGTH - id.length;
   return new Array(pad).fill("0").join("") + id;
 }
@@ -82,21 +82,21 @@ app.get("/pokemon/:language/:id", (req, res) => {
 
 app.get("/sprite/:id", (req, res) => {
   const id = req.params.id;
-  const paddedId = paddId(id);
+  const paddedId = padId(id);
   const fileName = `${paddedId}MS.png`;
   res.sendFile(fileName, getImageOptions("sprites"));
 });
 
 app.get("/image/:id", (req, res) => {
   const id = req.params.id;
-  const paddedId = paddId(id);
+  const paddedId = padId(id);
   const fileName = `${paddedId}.png`;
   res.sendFile(fileName, getImageOptions("images"));
 });
 
 app.get("/thumbnail/:id", (req, res) => {
   const id = req.params.id;
-  const paddedId = paddId(id);
+  const paddedId = padId(id);
   const fileName = `${paddedId}.png`;
   res.sendFile(fileName, getImageOptions("thumbnails"));
 });
